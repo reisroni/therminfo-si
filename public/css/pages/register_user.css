@@ -1,0 +1,39 @@
+/*******************************************
+ * register_user.css
+ * Register User, Change Password, 
+ * Reset Password
+ * Criado: 20-05-2012
+ * Copyright (c) 2012, ThermInfo
+ *******************************************/
+
+/* ----- Register User, Change Password, Reset Password View ----- */
+
+#register-intro-text, #change-intro-text, #reset-intro-text {
+	margin: 10px;
+	padding: 10px;
+	background-color: #FFFFFF;
+	font-size: 1.1em;
+}
+#register-fields li label, #change-fields li label, #reset-fields li label  {
+	float: left;
+    padding-left: 5px;
+	padding-top: 5px;
+}
+#register-fields div {
+	width: 380px;
+}
+#register-fields li label {
+	width: 90px;
+}
+#change-fields div {
+	width: 420px;
+}
+#change-fields li label {
+	width: 130px;
+}
+#reset-fields div {
+	width: 350px;
+}
+#reset-fields li label {
+	width: 60px;
+}

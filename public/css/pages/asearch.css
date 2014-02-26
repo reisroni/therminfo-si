@@ -1,0 +1,41 @@
+/*******************************************
+ * asearch.css
+ * Advanced Search
+ * Criado: 25-09-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- Advanced Search View ----- */
+
+#class {
+	width: 453px;
+}
+#subclass {
+	width: 453px;
+}
+#family  {
+	width: 453px;
+}
+#charTable {
+	width: 100%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+#charTable tr {
+	height: 50px;
+	padding-left: 10px;
+	border-top: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+}
+#charTable tr.noborder {
+	border-top: hidden;
+}
+#charTable td.charTitle {
+	background-color: #f7f7f7;
+}
+#charTable td {
+	padding-left: 10px;
+}
+#as_smiles {
+	margin-top: 10px;
+}

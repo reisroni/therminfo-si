@@ -1,0 +1,19 @@
+/*******************************************
+ * login.css
+ * Login
+ * Criado: 25-09-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- Login View ----- */ 
+
+#loginText {
+	height: 100px;
+	margin: 0 5px 10px 5px;
+	padding: 10px;
+	background-color: #FFFFFF; /*#f7f7f7*/
+	font-size: 1.1em;
+}
+#login_pass {
+	margin-left: 28px;
+}

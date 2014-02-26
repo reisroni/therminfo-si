@@ -1,0 +1,61 @@
+/*******************************************
+ * compound.css
+ * Ficha do composto
+ * Criado: 25-09-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- Compound View ----- */
+
+#compoundTitle {
+	margin: 0.2em 0 0 0;
+	color: #FF9900;
+	font-size: 1.7em;
+	text-align: center;
+}
+#compoundImg {
+	width: 601px;
+	height: 242px;
+	border: 3px solid #CCCCCC;
+}
+table#compoundTable {
+	width: 100%;
+}
+table#compoundTable td {
+	height: 30px;
+	padding-left: 10px;
+}
+table#compoundTable .title {
+	width: 150px;
+	font-weight: bold;
+}
+table#compoundTable .grid {
+	background-color: #f7f7f7;
+}
+#printButton {
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+.prop-table {
+	margin-bottom: 5px;
+	border-collapse: separate;
+	border-spacing: 5px;
+	width: 100%;
+}
+.prop-table th {
+	padding: 5px;
+	text-align: left;
+}
+.prop-table td {
+	text-align: left;
+}
+
+/* ----- Portlets ----- */
+
+.column { padding: 10px; width: 650px;}
+.portlet { margin: 0.7em 0.7em 0.7em 0.7em;}
+.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; font-size: 0.9em; }
+.portlet-header .ui-icon { float: right; }
+.portlet-content { padding: 0.4em; text-align: center;}
+.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+.ui-sortable-placeholder * { visibility: hidden; }

@@ -1,0 +1,21 @@
+/*******************************************
+ * about.css
+ * Structural Search
+ * Criado: 19-11-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- About us View ----- */
+
+.about-Table, #publicationsP {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-collapse: separate;
+	border-spacing: 15px;
+	width: 100%;
+}
+.about-Table td {
+	padding: 15px;
+	background-color: #ffffff;
+}
+ 

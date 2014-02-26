@@ -1,0 +1,274 @@
+/*******************************************
+ * layout.css
+ * Layout das paginas
+ * Criado: 08-08-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- Layout das paginas ----- */
+
+#fixApplet, #pageTop, #pageTopBar, #pageContent {
+	float: left;
+	width: 100%;
+}
+#fixApplet {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 148px;
+	z-index: 2;
+	border: none;
+	overflow: hidden;
+}
+#pageTopBar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 822px!important;
+	height: 39px;
+	z-index: 3;
+	background: #CBC55C url('../../media/images/bg_topbar.gif') repeat-x;
+	border-bottom: 1px solid #808080;
+}
+#pageTopBarDate {
+	width: 190px;
+	margin-top: 13px;
+	margin-left: 30px;
+}
+#pageTopBarLinks {
+	margin-top: 10px;
+}
+#pageTop {
+	position: fixed;
+	top: 40px;
+	left: 0;
+	min-width: 822px!important;
+	height: 108px;
+	z-index: 3;
+	background-color: #f7f7f7;
+	border-bottom: 2px solid #808080;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+}
+#pageTopLogo {
+	width: 190px;
+	height: 108px;
+	margin-left: 30px;
+}
+#pageTopLogo a {
+	display: inline-block;
+}
+#pageTopTitle {
+	margin-top: 35px;
+	margin-right: 40px;
+	text-shadow: 2px 2px 5px black;
+	-webkit-text-stroke: 1px #808080;
+	text-stroke: 1px #808080;
+}
+#pageContent {
+	position: static;
+	min-height: 300px;
+	z-index: 2;
+	padding-top: 148px;
+}
+#pageContentCanvas {
+	padding-left: 220px;
+}
+#pageContentNav {
+	position: fixed;
+	top: 148px;
+	left: 0;
+	bottom: 0;
+	width: 219px;
+	z-index: 1;
+	border-right: 1px solid #808080;
+	overflow: auto;
+}
+#pageContentMain {
+	float: left;
+	width: 100%;
+	min-height: 400px;
+	padding: 0px 0 50px 0;
+}
+
+/* ----- Gray Panel ----- */
+#pageContentTextPanel {
+	width: 600px;
+	padding: 10px;
+	margin-top: 20px;
+	background-color: #EEEEEE;
+	border: 1px solid #808080;
+	box-shadow: 3px 5px 5px #888888;
+	-moz-box-shadow: 3px 5px 5px #888888;
+	-webkit-box-shadow: 3px 5px 5px #888888;
+}
+/****************************/
+
+#pageContentTextInfo {
+	width: 550px;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+#pageContentTextResult {
+	width: 580px;
+	margin-top: 15px;
+	text-align: center;
+}
+#pageFooter {
+	min-width: 602px!important;
+	height: 45px;
+	padding-left: 220px;
+}
+#pageFooterText {
+	height: 100%;
+	border-top: 1px solid #808080;
+	background-color: #bfbfbf;
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#bfbfbf), to(#fcfcfc), color-stop(10%, #d9d9d9), color-stop(88%, #f2f2f2), color-stop(97%, #f7f7f7));
+	background-image: -webkit-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: -moz-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: -o-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: -ms-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+}
+
+/* ----- Classes utilitarias ----- */
+
+/* ----- Center ----- */
+.center {
+	margin: 0px auto;
+}
+/* ----- Floats ----- */
+.clear {
+	clear: both;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+/* ----- Text align ----- */
+.textCenter {
+	text-align: center;
+}
+.textLeft {
+	text-align: left;
+}
+.textRight {
+	text-align: right;
+}
+
+/* ----- Pagina da ficha do composto ----- */
+
+#compound #pageTopBar {
+	position: relative;
+	float: none;
+}
+#compound #pageTop {
+	position: relative;
+	top: 0;
+	float: none;
+}
+#compound #pageContent {
+	float: none;
+	background-color: #FFFFFF;
+	border-top: solid 1px #CCCCCC;
+	min-height: 400px;
+	padding: 0px;
+}
+#compound #pageContentMain {
+	float: none;
+	padding: 0;
+}
+#compound #pageFooter {
+	padding: 0;
+	border-top: 1px solid #808080;
+	background-color: #bfbfbf;
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#bfbfbf), to(#fcfcfc), color-stop(10%, #d9d9d9), color-stop(88%, #f2f2f2), color-stop(97%, #f7f7f7));
+	background-image: -webkit-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: -moz-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: -o-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: -ms-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	background-image: linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+	box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+	position: relative;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+#compound #pageFooter p {
+	margin: 1.5em 0 0 0;
+}
+
+/* --------- Barra de rolagem do Chrome e IE --------- */
+
+::-webkit-scrollbar {
+		height: 0.95em;
+		overflow: visible;
+		width: 0.95em;
+}
+::-webkit-scrollbar-button {
+	height: 0;
+	width: 0;
+}
+::-webkit-scrollbar-track {
+	background-clip: padding-box;
+	border: solid transparent;
+	border-width: 0 0 0 7px;
+}
+::-webkit-scrollbar-track:hover {
+	background-color: rgba(0,0,0,.05);
+	box-shadow:inset 1px 0 0 rgba(0,0,0,.1);
+}
+::-webkit-scrollbar-track:horizontal {
+	border-width: 7px 0 0;
+}
+::-webkit-scrollbar-track:horizontal:hover {
+	box-shadow: inset 0 1px 0 rgba(0,0,0,.1);
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0,0,0,.2);
+	background-clip: padding-box;
+	border: solid transparent;
+	border-width: 1px 1px 1px 3px;
+	height: 5px;
+	padding: 100px 0 0px;
+	box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07);
+}
+::-webkit-scrollbar-thumb:horizontal {
+	border-width: 7px 0 0;
+	border-width: 3px 1px 1px;
+	padding: 0 0 0 100px;
+	box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.07);
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0,0,0,.4);
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,.25);
+}
+::-webkit-scrollbar-thumb:active {
+	background-color: rgba(0,0,0,0.5);
+	box-shadow: inset 1px 1px 3px rgba(0,0,0,0.35);
+}
+::-webkit-scrollbar-track-piece {
+	background-clip: padding-box;
+	background-color: #f5f5f5;
+	border-width: 0 0 0 3px;
+	box-shadow: inset 1px 0 0 rgba(0,0,0,.14), inset -1px 0 0 rgba(0,0,0,.07);
+}
+::-webkit-scrollbar-track-piece:horizontal {
+	border-width: 3px 0 0;
+	box-shadow: inset 0 1px 0 rgba(0,0,0,.14), inset 0 -1px 0 rgba(0,0,0,.07);
+}
+::-webkit-scrollbar-corner {
+	background-clip: padding-box;
+	background-color: #f5f5f5;
+	border-width: 3px 0 0 3px;
+	box-shadow: inset 1px 1px 0 rgba(0,0,0,.14);
+}

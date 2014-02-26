@@ -1,0 +1,57 @@
+/*******************************************
+ * qsearch.css
+ * Quick Search
+ * Criado: 25-09-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+ 
+/* ----- Resultados (em todas as pesquisas) ----- */
+
+table#resultTable {
+	width: 100%;
+}
+table#resultTable td, table#resultTable th {
+	height: 30px;
+	padding-left: 5px;
+}
+table#resultTable th {
+	width: 180px;
+	text-align: left;
+}
+table#resultTable th:hover {
+	background-color: #f5f5b5;
+}
+table#resultTable tr.alt {
+	background-color: #CBC55C;
+}
+table#resultTable td.index {
+	height: 22px;
+	font-weight: bold;
+}
+table#resultTable .smiles {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+table#resultTable tr td.img {
+	width: 200px;
+}
+table#resultTable tr td img {
+	width: 195px; 
+	height: 80px;
+}
+.ImgBorder_1 {
+	border: 2px solid #CCCCCC;
+}
+.ImgBorder_2 {
+	border: 3px solid #FF9900;
+}
+
+/* ----- Quick Search View ----- */
+#qs_rules {
+	margin-top: 5px;
+}
+#smilesPane, #nameRule, #formRule, #idFormat ,  
+#casrnFormat , #smilesFormat, #inchiFormat, #inchiPane {
+	display: inline;
+}

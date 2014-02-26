@@ -1,0 +1,20 @@
+/*******************************************
+ * main.css
+ * Folha de estilo principal
+ * Criado: 05-08-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+
+/* ----- Estilos Base ----- */
+
+/* Normalizacao */
+@import url("base/normalize.css");
+/* Layout das paginas */
+@import url("base/layout.css");
+/* Formato dos textos */
+@import url("base/format.css");
+/* Formularios */
+@import url("base/forms.css");
+/* Menus */
+@import url("base/menu.css");

@@ -1,0 +1,84 @@
+/*******************************************
+ * menu.css
+ * Menu das paginas
+ * Criado: 02-09-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- Menu principal ----- */
+
+#menu {
+	float: right;
+	margin: 0;
+	padding: 0;
+	width: 190px;
+	font-size: 11px;
+	font-weight: bold;
+}
+#menuImgTop {
+	float: right;
+	width: 184px;
+	height: 8px;
+	background-color: #ABC578; /*#FF9900*/;
+	/*background: #ABC578 url('../../media/images/mnu_topshadow.gif') no-repeat;*/
+}
+#menuImgBottom {
+	float: right;
+	width: 185px;
+	height: 8px;
+	background: url('../../media/images/mnu_bottomshadow.gif') no-repeat;
+}
+#items {
+	float: right;
+	width: 185px;
+	margin: 0;
+	padding: 0;
+}
+#items ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+#items li {
+	width: 185px;
+	margin: 0;
+	padding: 0;
+}
+#items li a {
+	width: 184px;
+	height: 20px;
+	background-color: #ABC578; /*#FF9900*/
+	display: block;
+	border-bottom: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+	padding-top: 5px;
+	text-align: center;
+	text-decoration: none;
+	color: #000000;
+}
+#items ul ul {
+	display: none;
+}
+#items ul ul a {
+	background-color: #ADA96E; /*#CBC55C*/
+}
+#items li a:hover {
+	background-color: #514F1C; /*#7f4c00*/
+	color: #FFFFFF;
+}
+#items li ul a:hover {
+	background-color: #65622e;
+	color: #FFFFFF;
+}
+#items li a:focus {
+	background-color: #514F1C; /*#666666*/
+	color: #FFFFFF;
+}
+#items li ul a:focus {
+	background-color: #65622e;
+	color: #FFFFFF;
+}
+#items li .current {
+	background-color: #514F1C; /*#7f4c00*/
+	color: #FFFFFF;
+}

@@ -1,0 +1,21 @@
+/*******************************************
+ * ssearch.css
+ * Structural Search
+ * Criado: 25-09-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- Structural and Substructure Search View ----- */
+
+#as-applet {
+	margin-bottom: 30px;
+}
+#goBackForm {
+	margin: 10px 0 15px 0;
+}
+#cactusImg {
+	width: 200px; 
+	height: 200px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}

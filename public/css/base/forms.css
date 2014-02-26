@@ -1,0 +1,333 @@
+/*******************************************
+ * forms.css
+ * Formularios
+ * Criado: 08-08-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- Formatacao base dos formularios ----- */
+
+/* Form Structure */
+form ul {
+	padding: 0;
+	list-style-type: none;
+}
+form li {
+	position: relative; /* Makes Instructs z-index stay on top in IE. */
+}
+form ul:after, form li:after, form li div:after {
+	content: "."; 
+	display: block;
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+}
+
+/* Labels */
+form li span label {
+	padding-top: 3px;
+	clear: both;
+	line-height: 160%;
+	color: #444;
+	display: block;
+	cursor: pointer;
+}
+form label {
+	padding-top: 3px;
+	line-height: 160%;
+	color: #444;
+	display: inline;
+	cursor: pointer;
+}
+fieldset {
+	display: block;
+	margin: 5px;
+	padding: 5px;
+	background-color: #EEEEEE;
+	border-top: 2px dotted #000000;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+label.desc, legend.desc {
+	display: block;
+	margin: 0;
+	padding: 0 5px 0 5px;
+	border: 0;
+	font-size: 1.2em;
+	font-weight: bold;
+	line-height: 150%;
+	white-space: normal;
+	background-color: #EEEEEE;
+}
+
+/* Form fields */
+input.text, input.search, input.password, input.url, input.email, input.file, textarea.textarea, select.select {
+	font-size: 100%;
+	margin: 0.3em 0;
+	padding: 4px;
+	border: 1px solid #FF9900;
+}
+input.text:focus, input.search:focus, input.password:focus, input.url:focus, input.email:focus, 
+input.file:focus, textarea.textarea:focus, select.select:focus {
+	border-color: #000000;
+	-webkit-box-shadow: 0 0 5px #FF9900;
+	-moz-box-shadow: 0 0 5px #FF9900;
+	-o-box-shadow: 0 0 5px #FF9900;
+	box-shadow: 0 0 5px #FF9900;
+}
+input.checkbox, input.radio {
+	width: 15px;
+	height: 15px;
+	border-color: #FF9900;
+}
+
+/* Buttons */
+input.btTxt, button.btTxt {
+	height: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px 0 5px 0;
+	border: 1px solid #B1B3AD;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 1px 1px 2px #192c18;
+	-moz-box-shadow: 1px 1px 2px #192c18;
+	-o-box-shadow: 1px 1px 2px #192c18;
+	box-shadow: 1px 1px 2px #192c18;
+	font: bold 1em Tahoma, sans-serif;
+	color: #000000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#EEE));
+	background-image: -webkit-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: -moz-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: -ms-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: -o-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: linear-gradient(top, #FFFFFF, #EEE);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF',endColorstr='#EEEEEE',GradientType=0);
+}
+input.btTxt:hover, button.btTxt:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#D6D6D6));
+	background-image: -webkit-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -moz-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -ms-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -o-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: linear-gradient(top, #EFEFEF, #D6D6D6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef',endColorstr='#d6d6d6',GradientType=0);
+}
+input.btTxt:active, button.btTxt:active {
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-o-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+input.btTxt:focus, button.btTxt:focus {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#D6D6D6));
+	background-image: -webkit-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -moz-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -ms-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -o-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: linear-gradient(top, #EFEFEF, #D6D6D6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef',endColorstr='#d6d6d6',GradientType=0);
+}
+a.btTxt {
+	padding: 3px;
+	border: 1px solid #B1B3AD;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 1px 1px 2px #192c18;
+	-moz-box-shadow: 1px 1px 2px #192c18;
+	-o-box-shadow: 1px 1px 2px #192c18;
+	box-shadow: 1px 1px 2px #192c18;
+	font: bold 1em Tahoma, sans-serif;
+	text-decoration: none;
+	color: #000000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#EEE));
+	background-image: -webkit-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: -moz-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: -ms-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: -o-linear-gradient(top, #FFFFFF, #EEE);
+	background-image: linear-gradient(top, #FFFFFF, #EEE);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF',endColorstr='#EEEEEE',GradientType=0);
+}
+a.btTxt:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#D6D6D6));
+	background-image: -webkit-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -moz-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -ms-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -o-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: linear-gradient(top, #EFEFEF, #D6D6D6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef',endColorstr='#d6d6d6',GradientType=0);
+}
+a.btTxt:active {
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	-o-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+a.btTxt:focus {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EFEFEF), to(#D6D6D6));
+	background-image: -webkit-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -moz-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -ms-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: -o-linear-gradient(top, #EFEFEF, #D6D6D6);
+	background-image: linear-gradient(top, #EFEFEF, #D6D6D6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef',endColorstr='#d6d6d6',GradientType=0);
+}
+.btn {
+	padding: 5px 10px;
+	display: inline;
+	background: #777777 url(../../images/button.png) repeat-x bottom;
+	/*border: none;*/
+	border: 1px solid #B1B3AD;
+	color: #ffffff;
+	text-decoration: none;
+	cursor: pointer;
+	font: bold 1em Tahoma, sans-serif;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	text-shadow: 1px 1px #666666;
+}
+.btn:hover {
+	background-position: 0 center;
+}
+.btn:active {
+	background-position: 0 top;
+	position: relative;
+	top: 1px;
+	padding: 6px 10px 4px;
+}
+.btn.black { background-color: #333333; }
+.btn.black { background-color: #333333; }
+.btn.white { background-color: #ffffff; color: #000000; text-shadow: 1px 1px #ffffff; }
+.btn.small { font-size: 75%; padding: 3px 7px; }
+.btn.small:active { padding: 4px 7px 2px; background-position: 0 top; }
+.btn.large { font-size: 125%; padding: 7px 12px; }
+.btn.large:active { padding: 8px 12px 6px; background-position: 0 top; }
+
+/* Sizes */
+.third {
+	width: 32% !important;
+}
+.half {
+	width: 48% !important;
+}
+.full {
+	width: 100% !important;
+}
+input.small, select.small {
+	width: 25%;
+}
+input.medium, select.medium {
+	width: 50%;
+}
+input.large, select.large{
+	width: 100%;
+}
+
+/* Halves and Thirds */
+form li.leftHalf, form li.rightHalf {
+	width: 47% !important;
+}
+form li.leftThird, form li.middleThird, form li.rightThird {
+	width: 30% !important;
+}
+form li.leftFourth, form li.middleFourth, form li.rightFourth {
+	width: 23% !important;
+	_width: 22% !important;
+}
+form li.leftFifth, form li.middleFifth, form li.rightFifth {
+	width: 18% !important;
+	_width: 17% !important;
+}
+form li.full {
+	clear: none !important;
+	float: left;
+}
+form li.middleThird {
+	clear: none !important;
+	float: left;
+	margin-left: 2% !important;
+}
+form li.leftFourth, form li.middleFourth,
+form li.leftFifth, form li.middleFifth {
+	clear: none !important;
+	float: left;
+}
+form li.rightHalf, form li.rightThird, form li.rightFourth, form li.rightFifth {
+	clear: none !important;
+	float: right;
+}
+li.leftHalf .small, li.rightHalf .small,
+li.leftHalf .medium, li.rightHalf .medium,
+li.leftThird .small, li.middleThird .small, li.rightThird .small,
+li.leftThird .medium, li.middleThird .medium, li.rightThird .medium,
+li.leftFourth .medium, li.middleFourth .medium, li.rightFourth .medium,
+li.leftFourth .small, li.middleFourth .small, li.rightFourth .small,
+li.leftFifth .medium, li.middleFifth .medium, li.rightFifth .medium,
+li.leftFifth .small, li.middleFifth .small, li.rightFifth .small {
+	width: 100% !important;
+}
+form li.leftHalf, form li.leftThird, form li.leftFourth, form li.leftFifth {
+	clear: left !important;
+	float: left;
+}
+form .req {
+	color: red;
+	font-weight: normal;
+}
+form .text_note {
+	margin: 5px 0 5px 0;
+}	
+/* ----- Formularios das pesquisas ----- */
+
+#formContainer {
+	width: 600px;
+	margin-top: 10px;
+	text-align: left;
+	background-color: #EEEEEE;
+	border: 2px solid #808080;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-webkit-box-shadow: rgba(0,0,0,.2) 0px 0px 5px;
+	-moz-box-shadow: rgba(0,0,0,.2) 0px 0px 5px;
+	-o-box-shadow: rgba(0,0,0,.2) 0px 0px 5px;
+	box-shadow: rgba(0,0,0,.2) 0px 0px 5px;
+}
+#formHeader {
+	margin: 0;
+	padding: 0 0 5px 5px;
+	min-height: 0;
+	background-color: #CBC55C;
+	font-size: 11px;
+	font-weight: bold;
+}
+#tForm {
+	width: 100%;
+	color: #000000;
+	font-size: 0.8em;
+}
+#sCode {
+	margin-left: 100px;
+}
+#formCodeInput {
+	margin-top: 5px;
+}
+#submitButton {
+	float: left;
+}
+#formCodeInfo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#captchaImg {
+	border-style: solid;
+	border-width: 1px;
+}
+.formLegendTitle {
+	font-size: 24px;
+	color: #000;
+}

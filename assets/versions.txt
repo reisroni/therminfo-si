@@ -1,0 +1,38 @@
+#########################################################
+################### Versões em uso: #####################
+
+---------------------------------------------------------
+Grocery Crud (http://www.grocerycrud.com)
+---------------------------------------------------------
+-> grocery_crud_1.3.3.zip - v1.3.3
+-> public/application/config/grocery_crud.php (1.3.3)
+-> public/application/libraries/Grocery_CRUD.php (1.3.3)
+
+---------------------------------------------------------
+PHPMyadmin (http://www.phpmyadmin.net)
+---------------------------------------------------------
+-> phpmyadmin_4.1.6.zip - v4.1.6
+
+[configurações dentro do ficheiro config.zip]
+
+---------------------------------------------------------
+JChempaint (http://jchempaint.github.io)
+---------------------------------------------------------
+-> jchempaint_3.3_1210.zip - v3.3_1210
+
+---------------------------------------------------------
+PHPExcel (http://phpexcel.codeplex.com)
+---------------------------------------------------------
+-> PHPExcel_1.7.9.zip - v1.7.9
+
+---------------------------------------------------------
+REST Controller (https://github.com/philsturgeon/codeigniter-restserver)
+---------------------------------------------------------
+-> config/rest.php - v2.7.0
+-> public/application/libraries/Format.php - v2.7.0
+-> public/application/libraries/REST_Controller.php - v2.7.0
+
+---------------------------------------------------------
+JSME (http://peter-ertl.com/jsme)
+---------------------------------------------------------
+-> jsme_2013-10-13.zip - v2013-10-13

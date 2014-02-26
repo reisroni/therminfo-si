@@ -1,0 +1,134 @@
+/*******************************************
+ * ie.css
+ * Estilos para o IE
+ * Criado: 08-08-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+ 
+/* ----- IE CSS fix ----- */
+
+/* Make sure the layout is centered in IE5 */
+body {
+ text-align: center;
+}
+
+/* *** Elements *** */
+
+/* Fixes incorrect styling of legend in IE6. */
+* html legend { 
+	margin: 0 -8px 16px 0; 
+	padding: 0; 
+}
+
+/* Fixes wrong line-height on sup/sub in IE. */
+sup { 
+	vertical-align: text-top; 
+}
+sub { 
+	vertical-align: text-bottom; 
+}
+
+/* Fixes IE7 missing wrapping of code elements. */
+html>body p code { 
+	*white-space: normal; 
+}
+
+/* IE 6&7 has problems with setting proper <hr> margins. */
+hr  { 
+	margin: -8px auto 10px; 
+}
+
+/* Explicitly set interpolation, allowing dynamically resized images to not look horrible */
+img { 
+	-ms-interpolation-mode: bicubic; 
+}
+
+/* *** Forms *** */
+
+/* Fixes padding on fieldset */
+fieldset { 
+	padding-top: 0; 
+}
+legend { 
+	margin-top: -0.2em; 
+	margin-bottom: 1em; 
+	margin-left: -0.5em; 
+}
+
+/* Makes classic textareas in IE 6 resemble other browsers */
+textarea { 
+	overflow: auto; 
+}
+
+/* Makes labels behave correctly in IE 6 and 7 */
+label { 
+	vertical-align: middle; 
+	position: relative; 
+	top: -0.25em; 
+}
+
+/* ----- Therminfo layout - IE6 ----- */
+#fixApplet {
+	position: absolute;
+}
+#pageTopBar {
+	position: relative;
+}
+#pageTopBarDate {
+	width: 220px;
+	margin-left: 0;
+	padding-left: 15px;
+}
+#pageTop {
+	position: relative;
+	top: 0;
+}
+#pageTopLogo {
+	width: 220px;
+	margin-left: 0;
+	padding-left: 15px;
+}
+#pageTopTitle {
+	margin-top: 40px;
+	margin-right: 25px;
+}
+#pageContent {
+	background-color: #F7F7F7;
+	border-top: solid 1px #CCCCCC;
+	padding: 0px;
+}
+#pageContentCanvas {
+	padding-left: 0;
+	background-color: black;
+}
+#pageContentNav  {
+	position: relative;
+	top: 0;
+	float: left;
+	border-right: 0;
+}
+#pageContentMain {
+	padding: 0;
+	width: 80%;
+	float: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-left: 1px solid #808080;
+}
+#pageFooter {
+	float: none;
+	border-top: 1px solid #808080;
+	background-color: #bfbfbf;
+}
+
+/* ----- Pagina da ficha do composto - IE6 ----- */
+
+#compound #pageContentMain {
+	border-left: 0;
+}
+#compound html {
+	overflow-y: hidden;
+}
+#compound body {
+    right: 0;
+}

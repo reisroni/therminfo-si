@@ -1,0 +1,147 @@
+====================================================================================
+                                ----- ThermInfo ------
+====================================================================================
+Versão 2.0
+
+http://therminfo.lasige.di.fc.ul.pt/
+
+Copyright (C) 2009-2014
+	Ana Teixeira <analinoteixeira@gmail.com>
+	Roni Reis <reisrony@hotmail.com>
+
+------------------------------------------------------------------------------------
+                                    Instalação
+------------------------------------------------------------------------------------
+
+Para o sistema funcionar, coloca os ficheiros/pastas na 'root' 
+(ou qualquer pasta dentro da root) do servidor web e faça as 
+seguintes configurações:
+
+
+* Software necessário:
+------------------------------------------------------------------------------------
+. PHP 5.2 ou posterior
+. Python 2.7
+. MySQL 5.0 ou posterior
+. OpenBabel 2.3.0 ou posterior
+. OpenBabel Python bindings 1.7 ou posterior (para Python 2.7)
+. OASA python library 0.13.1 (para Python 2.7) (http://bkchem.zirael.org/oasa_en.html)
+. Formol 0.4 ou posterior (http://formol.sourceforge.net/)
+
+
+* Configurações do servidor web:
+------------------------------------------------------------------------------------
+-> Configuração do PHP (Php.ini):
+- Data (date.timezone = "Europe/Lisbon")
+- Tamanho de upload (post_max_size = 20M, upload_max_filesize = 25M)
+
+-> Configuração do Apache (http.conf):
+- Activar o módulo 'rewrite_module' (necessário para retirar o index.php do url)
+<Directory "var/www/html">
+    Options Indexes FollowSymLinks
+    
+    AllowOverride All
+    
+    Order allow,deny
+    Allow from all
+</Directory>
+
+
+* Unzip os seguintes ficheiros:
+------------------------------------------------------------------------------------
+- system.zip
+- user_guide.zip
+- assets/grocery_crud_1.3.3.zip
+    (copiar 'config/', 'libraries/' e 'models/' para as respectivas pastas)
+- assets/jchempaint_3.3_1210.zip
+- assets/phpmyadmin_4.1.6.zip
+    (configuração do phpmyadmin em 'phpmyadmin/config.zip')
+- public/media/images/molecules.zip
+- public/application/libraries/PHPExcel_1.7.9.zip
+
+
+* Carrega a base de dados (se for a 1.ª vez) com os ficheiros:
+------------------------------------------------------------------------------------
+- public/media/db_data/sql/therminfo_v2/Therminfo2DB.sql
+- public/media/db_data/sql/therminfo_v2/Therminfo2DB_crc_data.sql
+- public/media/db_data/sql/therminfo_v2/others/OthersBD.sql
+- public/media/db_data/sql/therminfo_v2/others/OthersBD_data.sql
+
+
+* Configure os dados de acesso à Base de dados:
+------------------------------------------------------------------------------------
+- public/application/config/constants.php (HOST, USER, PASS, DB)
+- public/application/config/database.php
+
+
+* Altera o nome do dominio nos seguintes ficheiros:
+------------------------------------------------------------------------------------
+- public/js/admin_add.js (uri)
+- public/js/admin_del.js (uri)
+- public/js/asearch.js (uri)
+- public/js/qsearch.js (uri)
+- public/js/tools.js (uri)
+
+Obs:
+Se não utilzar o 'rewrite_module', alterar também o dominio no 
+ficheiro - public/application/config/config.php (base_url)
+
+
+* Altera a localização do therminfo no servidor web no seguinte
+ficheiro (se a localização for a root coloque apenas '/'):
+------------------------------------------------------------------------------------
+- .htacess
+    Custom error messages (ErrorDocument)
+    Rewrite engine (RewriteBase)
+
+Obs: Ficheiro necessário para configurar o 'rewrite_module'
+
+
+* Crontabs necessários:
+------------------------------------------------------------------------------------
+00 1 27 1-12 * php /path/to/project/index.php crontabs scripts db_evolution_insert
+00 2 27 * * php /path/to/project/index.php crontabs scripts ip_list
+00 4 * * * export BABEL_LIBDIR=/usr/lib/openbabel/2.3.1; 
+php /path/to/project/index.php crontabs scripts create_db_pkl
+00 5 27 1-12 * php /path/to/project/index.php crontabs scripts therminfo_backup
+
+------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------
+                            Web Service (v1 REST API)
+------------------------------------------------------------------------------------
+
+URL:
+------------------------------------------------------------------------------------
+"http://url_base/api/v1/controlador/recurso/query/valor[/formato/valor]"
+
+
+Controladores e recursos:
+------------------------------------------------------------------------------------
+- controlador 'qsearch':
+formula (pesquisa pela formula)
+id (pesquisa pelo ThermInfo ID)
+casrn (pesquisa pelo CAS RN)
+smiles (pesquisa pelo SMLIES)
+
+Ex. 
+"http://url_base/api/v1/qsearch/formula/query/C4H6"
+"http://url_base/api/v1/qsearch/id/query/CO0002343/format/json"
+"http://url_base/api/v1/qsearch/casrn/query/463-82-1/format/php"
+
+- controlador 'compound':
+id (ficha do composto pelo ID)
+
+Ex.
+"http://url_base/api/v1/compound/id/query/23"
+"http://url_base/api/v1/compound/id/query/2343/format/jsonp"
+
+
+Formatos disponíveis:
+------------------------------------------------------------------------------------
+xml (formato por defeito)
+json (javascript object notation)
+jsonp (javascript object notation)
+php (PHP data)
+serialize (PHP serialize data)

@@ -1,0 +1,49 @@
+/*******************************************
+ * qelba.css
+ * Quick Elba (Result)
+ * Criado: 07-09-2012
+ * Copyright (c) 2012, ThermInfo
+ *******************************************/
+
+#content {
+	width: 75%;
+	padding: 5px;
+	background-color: #f7f7f7;
+	text-align: center;
+}
+#compoundImg {
+	width: 50%;
+	height: 40%;
+	border: 3px solid #FF9900;
+}
+.qelba-resultTable-1 {
+	width: 85%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.qelba-resultTable-1 td {
+	padding: 5px;
+	text-align: justify;
+}
+.qelba-resultTable-1 th {
+	width: 20%;
+	text-align: right;
+}
+.qelba-resultTable-2 {
+	width: 80%;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	background-color: #EEEEEE;
+}
+.qelba-resultTable-2 td {
+	padding: 8px 2px 8px 2px;
+	text-align: center;
+	border-bottom: 1px solid #666666;
+	border-top: 1px solid #666666;
+}
+.qelba-resultTable-2 td.tjustify {
+	text-align: justify;
+}
+.ImgBorder_2 {
+	border: 3px solid #FF9900;
+}

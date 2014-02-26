@@ -1,0 +1,26 @@
+/*******************************************
+ * news.css
+ * Structural Search
+ * Criado: 20-11-2011
+ * Copyright (c) 2011, ThermInfo
+ *******************************************/
+
+/* ----- News & Contributions View ----- */ 
+
+.news-Table{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-collapse: separate;
+	border-spacing: 15px;
+	width: 100%;
+}
+.news-Table td {
+	padding: 10px;
+	background-color: #ffffff;
+	border: 1px solid #000;
+}
+.news-Table th {
+	padding: 10px;
+	border: 1px solid #000;
+	text-align: center;
+}
