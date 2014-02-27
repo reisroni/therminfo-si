@@ -1,13 +1,17 @@
 <?php
 // Dados para o cabecalho
-$item_1 = '<a href="administration/admin_main" title="Back to main area"><i class="icon-arrow-left-3 fg-darker on-left"></i></a>Backoffice: <small>Properties/Compounds Management</small>';
+$item_1 = '<a href="administration/admin_main" title="Back to main area"><i class="icon-arrow-left-3 fg-darker on-left"></i></a>Backoffice: <small>Compounds Management</small>';
 $item_2 = '<a class="element" href="administration/admin_main" title="Main area">Main</a>'.
-		  '<a class="element" href="administration/admin_compounds/mols_management" target="compounds_main" title="All Compounds">All Compounds</a>'.
-          '<a class="element" href="administration/admin_compounds/" target="compounds_main" title="Add Compounds">Add Compounds</a>'.
-          '<a class="element" href="administration/admin_compounds/class_management" target="compounds_main" title="ALL Class">All Class</a>'.
-          '<a class="element" href="administration/admin_compounds/subclass_management" target="compounds_main" title="ALL Subclass">All Subclass</a>'.
-          '<a class="element" href="administration/admin_compounds/family_management" target="compounds_main" title="ALL Family">All Family</a>'.
-          '<a class="element" href="administration/admin_compounds/chars_management" target="compounds_main" title="ALL Characteristic">All Characteristic</a>';
+          '<div class="element"><a class="dropdown-toggle" href="/" title="Compounds menu">Compounds</a><ul class="dropdown-menu inverse" data-role="dropdown">'.
+		  '<li><a href="administration/admin_compounds/mols_management" target="compounds_main" title="All Molecules">All Molecules</a></li>'.
+          '<li><a href="administration/admin_compounds/mols_management" target="compounds_main" title="Add Molecules">Add Molecules</a></li>'.
+          '<li><a href="administration/admin_compounds/synonym_management" target="compounds_main" title="All Molecules Synonym">Molecules Synonym</a></li>'.
+          '<li><a href="administration/admin_compounds/others_db_management" target="compounds_main" title="All Molecules Others DB">Molecules Others DB</a></li></ul></div>'.
+          '<div class="element"><a class="dropdown-toggle" href="/" title="Compounds Classification">Classification</a><ul class="dropdown-menu inverse" data-role="dropdown">'.
+          '<li><a href="administration/admin_compounds/class_management" target="compounds_main" title="All Class">Class</a></li>'.
+          '<li><a href="administration/admin_compounds/subclass_management" target="compounds_main" title="All Subclass">Subclass</a></li>'.
+          '<li><a href="administration/admin_compounds/family_management" target="compounds_main" title="All Family">Family</a></li>'.
+          '<li><a href="administration/admin_compounds/chars_management" target="compounds_main" title="All Characteristic">Characteristic</a></li></ul></div>';
 $data = array(
 		'title' => $item_1,
         'menu_items' => $item_2,

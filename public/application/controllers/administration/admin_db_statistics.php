@@ -3,7 +3,7 @@
 * admin_db_statistics.php
 * Controlador da administracao (DB Statistics)
 * Criado: 20-01-2014
-* Modificado: 25-01-2014
+* Modificado: 27-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -24,12 +24,9 @@ class Admin_db_statistics extends CI_Controller {
 							'user_inst' => NULL,
 							'user_email' => NULL);
         // Carregar os modelos e inicializar a BD
-        //$this->load->model('user/User_model');
+        $this->load->model('statistics/Contador_model');
+		$this->load->model('statistics/Dbevolution_model');
         $this->load->model('other/Session_model');
-		//$this->Molecule_model->setDatabase(HOST, USER, PASS, DB);
-        // Carregar os modulos necessarios
-        $this->load->library('grocery_CRUD');
-		$this->load->library('Util');
     }
 	
 	/**
@@ -49,7 +46,7 @@ class Admin_db_statistics extends CI_Controller {
 				$this->data['user_inst'] = $_SESSION['user_inst'];
 				$this->data['user_email'] = $_SESSION['user_email'];
 
-				$this->load->view('content/admin/admin_view', $this->data);
+				$this->load->view('content/admin/admin_statistics_view', $this->data);
 			}
 			else
 			{

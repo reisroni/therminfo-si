@@ -29,17 +29,19 @@ $this->load->view('layout/admin_header', $data);
                             <i class="icon-plus"></i>
                         </div>
                         <div class="tile-status">
-                            <span class="name">Insert New Data</span>
+                            <span class="name">Insert New Compounds/Values</span>
                         </div>
                     </div>
-                    <div class="tile double bg-amber">
-                        <div class="tile-content icon">
-                            <i class="icon-checkmark"></i>
+                    <a href="administration/admin_validate_data" title="Validate New Compounds/Values">
+                        <div class="tile double bg-amber">
+                            <div class="tile-content icon">
+                                <i class="icon-checkmark"></i>
+                            </div>
+                            <div class="tile-status">
+                                <span class="name">Validate New Compounds/Values</span>
+                            </div>
                         </div>
-                        <div class="tile-status">
-                            <span class="name">Validate New Entry</span>
-                        </div>
-                    </div>
+                    </a>
                     <a href="administration/admin_compounds" title="Compounds Management">
                         <div class="tile double bg-cyan">
                             <div class="tile-content icon">
@@ -50,7 +52,6 @@ $this->load->view('layout/admin_header', $data);
                             </div>
                         </div>
                     </a>
-                    
                     <a href="administration/admin_properties" title="Properties/Values Management">
                         <div class="tile double bg-cyan">
                             <div class="tile-content icon">
@@ -81,15 +82,16 @@ $this->load->view('layout/admin_header', $data);
 	                        </div>
 	                    </div>
                     </a>
-                    <div class="tile double bg-amber">
-                        <div class="tile-content icon">
-                            <i class="icon-stats-up"></i>
-                        </div>
-                        <div class="tile-status">
-                            <span class="name">Database Statistics</span>
-                        </div>
-                    </div>
-
+					<a href="administration/admin_db_statistics" title="Database Statistics">
+						<div class="tile double bg-amber">
+							<div class="tile-content icon">
+								<i class="icon-stats-up"></i>
+							</div>
+							<div class="tile-status">
+								<span class="name">Database Statistics</span>
+							</div>
+						</div>
+					</a>
                     <?php if ($user_type == 'superadmin'): ?>
                     <a href="administration/admin_db_control" title="Database Control">
 	                    <div class="tile double bg-amber">

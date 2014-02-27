@@ -3,7 +3,7 @@
 * admin_references.php
 * Controlador da administracao (References)
 * Criado: 20-01-2014
-* Modificado: 25-01-2014
+* Modificado: 26-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -27,7 +27,6 @@ class Admin_references extends CI_Controller {
         $this->load->model('reference/Reference_model');
         $this->load->model('reference/Author_model');
         $this->load->model('other/Session_model');
-		$this->Reference_model->setDatabase(HOST, USER, PASS, DB);
         // Carregar o modulo necessario
         $this->load->library('grocery_CRUD');
     }
@@ -105,7 +104,7 @@ class Admin_references extends CI_Controller {
 			
 			// Callback functions
 			// Inserir
-			$crud->callback_insert(array($this, 'ref_insert_callback'));
+			$crud->callback_insert(array($this, 'callback_ref_insert'));
 			
 			// Vista
 			$output = $crud->render();
@@ -115,17 +114,14 @@ class Admin_references extends CI_Controller {
 		else
 		{
 			// Area proibida
-			set_status_header(401, 'Forbidden Area');
-            $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
-                    text-align:center"><h2>Forbidden Area</h2></div>';
-			$this->output->set_output($html);
+			$this->output->set_output($this->_show_forbidden_msg());
 		}
 	}
 	
 	/*
 	 * Inserir nova referencia na BD (grocery CRUD callback)
 	 */
-	public function ref_insert_callback($post_array = array())
+	public function callback_ref_insert($post_array = array())
 	{
         $result = FALSE;
         // ** Verifica se o utilizador e administrador **
@@ -145,9 +141,9 @@ class Admin_references extends CI_Controller {
             $publisher = $post_array['publisher'];
             $authors = (isset($post_array['authors']) && ! empty($post_array['authors'])) ? $post_array['authors'] : '';
             
-            //$this->Reference_model->add_reference($type, $authors, $title, $year, $journal, $book, $vol, $issue, $bp, $ep, $editor, $publisher);
-            return TRUE;
+            $result = FALSE; //$this->Admin_model->add_reference($type, $authors, $title, $year, $journal, $book, $vol, $issue, $bp, $ep, $editor, $publisher);
         }
+        
         return $result;
 	}
 	
@@ -176,7 +172,7 @@ class Admin_references extends CI_Controller {
 			
 			// Callback functions
 			// Apagar
-			$crud->callback_delete(array($this, 'author_delete_callback'));
+			$crud->callback_delete(array($this, 'callback_author_delete'));
 			
 			// Vista
 			$output = $crud->render();
@@ -186,21 +182,37 @@ class Admin_references extends CI_Controller {
 		else
 		{
 			// Area proibida
-			set_status_header(401, 'Forbidden Area');
-            $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
-                    text-align:center"><h2>Forbidden Area</h2></div>';
-			$this->output->set_output($html);
+			$this->output->set_output($this->_show_forbidden_msg());
 		}
 	}
 	
 	/*
 	 * Elimina um autor da BD (grocery CRUD callback)
 	 */
-	public function author_delete_callback($primary_key)
+	public function callback_author_delete($primary_key = 0)
 	{
-        //$this->Admin_model->remove_author($primary_key);
-		return TRUE;
+        $result = FALSE;
+        // ** Verifica se o utilizador e administrador **
+		if (isset($_SESSION['type']) && ($_SESSION['type'] == 'admin' or $_SESSION['type'] == 'superadmin'))
+		{
+            $result = FALSE; //$this->Admin_model->remove_author($primary_key);
+        }
+        
+		return $result;
 	}
+    
+    /*
+     * Mostra a mensagem de 'area proibida'
+     *
+     * @return string Mensagem HTML
+     */
+    private function _show_forbidden_msg()
+    {
+        set_status_header(401, 'Forbidden Area');
+        $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
+        text-align:center"><h2>Forbidden Area</h2></div>';
+        return $html;
+    }
 }
 
 /* End of file admin_references.php */

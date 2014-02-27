@@ -3,7 +3,7 @@
 * admin_users.php
 * Controlador da administracao (Users)
 * Criado: 20-01-2014
-* Modificado: 24-02-2014
+* Modificado: 26-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -26,7 +26,6 @@ class Admin_users extends CI_Controller {
         // Carregar os modelos e inicializar a BD
         $this->load->model('user/User_model');
         $this->load->model('other/Session_model');
-		$this->User_model->setDatabase(HOST, USER, PASS, DB);
         // Carregar os modulos necessarios
         $this->load->library('grocery_CRUD');
 		$this->load->library('Util');
@@ -114,10 +113,7 @@ class Admin_users extends CI_Controller {
 		else
 		{
 			// Area proibida
-			set_status_header(401, 'Forbidden Area');
-            $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
-                    text-align:center"><h2>Forbidden Area</h2></div>';
-			$this->output->set_output($html);
+			$this->output->set_output($this->_show_forbidden_msg());
 		}
 	}
 	
@@ -139,6 +135,7 @@ class Admin_users extends CI_Controller {
 				$post_array['password'] = do_hash($post_array['password'], 'md5');
 			}
 		}
+        
 		return $post_array;
 	}
 	
@@ -216,15 +213,12 @@ class Admin_users extends CI_Controller {
 		else
 		{
 			// Area proibida
-			set_status_header(401, 'Forbidden Area');
-            $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
-                    text-align:center"><h2>Forbidden Area</h2></div>';
-			$this->output->set_output($html);
+			$this->output->set_output($this->_show_forbidden_msg());
 		}
 	}
 	
 	/*
-	 * Valida um novo utilizador da BD (grocery CRUD callback)
+	 * Valida um novo utilizador da BD (action CRUD callback)
 	 */
 	public function action_new_user_insert($user_id = 0)
 	{
@@ -234,7 +228,7 @@ class Admin_users extends CI_Controller {
 			if (empty($user_id))
 			{
                 $html = '<p style="padding:10px; color:#000000; border:1px solid #D893A1; background-color:#FBE6F2">
-                Lack user ID - <a href="'. base_url() .'administration/new_users_management">Back to List</a></p>';
+                Lack user ID - <a href="'. base_url() .'administration/admin_users/new_users_management">Back to List</a></p>';
 			}
 			else
 			{
@@ -244,7 +238,7 @@ class Admin_users extends CI_Controller {
                 if (! $user)
                 {
                     $html = '<p style="padding:10px; color:#000000; border:1px solid #D893A1; background-color:#FBE6F2">
-                    User doesn\'t exist - <a href="'. base_url() .'administration/new_users_management">Back to List</a></p>';
+                    User doesn\'t exist - <a href="'. base_url() .'administration/admin_users/new_users_management">Back to List</a></p>';
                 }
                 else
                 {
@@ -258,14 +252,14 @@ class Admin_users extends CI_Controller {
                     if (! is_array($save_status))
                     {
                         $html = '<p style="padding:10px; color:#000000; border:1px solid #D893A1; background-color:#FBE6F2">
-                        Failure - <a href="'. base_url() .'administration/new_users_management">Back to List</a></p>';
+                        Failure - <a href="'. base_url() .'administration/admin_users/new_users_management">Back to List</a></p>';
                     }
                     else
                     {
                         if ($save_status['result'] == FALSE)
                         {
                             $html = '<p style="padding:10px; color:#000000; border:1px solid #D893A1; background-color:#FBE6F2">
-                            Could not add the user. Error: '. $save['e_desc'] .' - <a href="'. base_url() .'administration/new_users_management">Back to List</a></p>';
+                            Could not add the user. Error: '. $save['e_desc'] .' - <a href="'. base_url() .'administration/admin_users/new_users_management">Back to List</a></p>';
                         }
                         else
                         {
@@ -287,7 +281,7 @@ class Admin_users extends CI_Controller {
                             }
                             
                             $html = '<p style="padding:10px; color:#000000; border:1px solid #008000; background-color:#DFF2BF">
-                            User added with success - <a href="'. base_url() .'administration/new_users_management">Back to List</a><br />
+                            User added with success - <a href="'. base_url() .'administration/admin_users/new_users_management">Back to List</a><br />
                             <span>'. $email_status .'</span></p>';
                         }
                     }
@@ -315,6 +309,7 @@ class Admin_users extends CI_Controller {
 		{
             // Procura o utilizador
             $user = $this->User_model->find_by_id($user_id);
+            
             if (! $user)
             {
                 $result = FALSE;
@@ -403,8 +398,8 @@ class Admin_users extends CI_Controller {
 			
 			// Callback functions
 			// Encriptar a palava-passe
-			$crud->callback_before_insert(array($this, 'user_pass_encrypt_callback'));
-			$crud->callback_before_update(array($this, 'user_pass_encrypt_callback'));
+			$crud->callback_before_insert(array($this, 'callback_user_pass_encrypt'));
+			$crud->callback_before_update(array($this, 'callback_user_pass_encrypt'));
 			
 			// Vista
 			$output = $crud->render();
@@ -414,12 +409,22 @@ class Admin_users extends CI_Controller {
 		else
 		{
 			// Area proibida
-			set_status_header(401, 'Forbidden Area');
-            $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
-                    text-align:center"><h2>Forbidden Area</h2></div>';
-			$this->output->set_output($html);
+			$this->output->set_output($this->_show_forbidden_msg());
 		}
 	}
+    
+    /*
+     * Mostra a mensagem de 'area proibida'
+     *
+     * @return string Mensagem HTML
+     */
+    private function _show_forbidden_msg()
+    {
+        set_status_header(401, 'Forbidden Area');
+        $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
+        text-align:center"><h2>Forbidden Area</h2></div>';
+        return $html;
+    }
 }
 
 /* End of file admin_users.php */

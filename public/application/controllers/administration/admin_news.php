@@ -3,7 +3,7 @@
 * admin_news.php
 * Controlador da administracao (News)
 * Criado: 20-01-2014
-* Modificado: 24-02-2014
+* Modificado: 26-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -26,7 +26,6 @@ class Admin_news extends CI_Controller {
         // Carregar os modelos e inicializar a BD
         $this->load->model('other/News_model');
         $this->load->model('other/Session_model');
-		$this->News_model->setDatabase(HOST, USER, PASS, DB);
         // Carregar o modulo necessario
         $this->load->library('grocery_CRUD');
     }

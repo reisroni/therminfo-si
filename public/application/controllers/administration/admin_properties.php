@@ -3,7 +3,7 @@
 * admin_properties.php
 * Controlador da administracao (Properties)
 * Criado: 20-01-2014
-* Modificado: 25-01-2014
+* Modificado: 26-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -26,7 +26,6 @@ class Admin_properties extends CI_Controller {
         // Carregar os modelos e inicializar a BD
         $this->load->model('property/Data_value_model');
         $this->load->model('other/Session_model');
-		$this->Data_value_model->setDatabase(HOST, USER, PASS, DB);
         // Carrega o modulo necessario
         $this->load->library('grocery_CRUD');
     }
@@ -105,11 +104,11 @@ class Admin_properties extends CI_Controller {
 			
 			// Callback functions
 			// Inserir
-			$crud->callback_insert(array($this, 'prop_vals_insert_callback'));
+			$crud->callback_insert(array($this, 'callback_prop_vals_insert'));
 			// Apagar
-			$crud->callback_delete(array($this, 'prop_vals_delete_callback'));
+			$crud->callback_delete(array($this, 'callback_prop_vals_delete'));
 			// Campo 'numeric'
-			$crud->callback_add_field('numeric', array($this, 'prop_vals_add_field_callback'));
+			$crud->callback_add_field('numeric', array($this, 'callback_prop_vals_add_field'));
 			
 			// Vista
 			$output = $crud->render();
@@ -119,60 +118,57 @@ class Admin_properties extends CI_Controller {
 		else
 		{
 			// Area proibida
-			set_status_header(401, 'Forbidden Area');
-            $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
-                    text-align:center"><h2>Forbidden Area</h2></div>';
-			$this->output->set_output($html);
+			$this->output->set_output($this->_show_forbidden_msg());
 		}
 	}
 	
 	/*
 	 * Insere um valor na BD (grocery CRUD callback)
 	 */
-	public function prop_vals_insert_callback($post_array)
+	public function callback_prop_vals_insert($post_array = array())
 	{
-		// Dados para insercao
-		$mol_id = $post_array['molecule'];
-		$property = $post_array['data'];
-		$ref = $post_array['reference'];
-		$value = str_replace(',', '.' , $post_array['value']);
-		$numeric = $post_array['numeric'] == 'yes' ? TRUE : FALSE;
-		$error = str_replace(',', '.' , $post_array['error']);
-		$obs = $post_array['obs'];
-		$advised = $post_array['advised'] == 'yes' ? TRUE : FALSE;
-		$validated = $post_array['validated'];
-		$user = $_SESSION['user_email'];
-		// Validacao dos dados
-		//$valid = $this->Admin_model->validate_data(5, $mol_id, $ref, $property, $value, $error, $numeric);
-		$valid = 1;
-		if ($valid === 1)
+        $result = FALSE;
+        // ** Verifica se o utilizador e administrador **
+		if (isset($_SESSION['type']) && ($_SESSION['type'] == 'admin' or $_SESSION['type'] == 'superadmin'))
 		{
-            $data = array('molecule' => $mol_id, 'data' => $property, 
-                    'reference' => $ref, 'value' => $value, 
-                    'error' => $error, 'obs' => $obs, 
-                    'advised' => $advised, 'validated' => $validated, 'outdated' => 0);
-            
-			// Adiciona o novo valor
-			$value = $this->Data_value_model->instantiate($data);
-            $add = $value->save();
-            
-            if (is_array($add)) {
-                $result = $add['result'];
-            } else {
-                $result = FALSE;
+            // Dados para insercao
+            $mol_id = $post_array['molecule'];
+            $property = $post_array['data'];
+            $ref = $post_array['reference'];
+            $value = str_replace(',', '.' , $post_array['value']);
+            $numeric = $post_array['numeric'] == 'yes' ? TRUE : FALSE;
+            $error = str_replace(',', '.' , $post_array['error']);
+            $obs = $post_array['obs'];
+            $advised = $post_array['advised'] == 'yes' ? TRUE : FALSE;
+            $validated = $post_array['validated'];
+            $user = $_SESSION['user_email'];
+            // Validacao dos dados
+            //$valid = $this->Admin_model->validate_data(5, $mol_id, $ref, $property, $value, $error, $numeric);
+            $valid = false;
+            if ($valid === 1)
+            {
+                $data = array('molecule' => $mol_id, 'data' => $property, 
+                        'reference' => $ref, 'value' => $value, 
+                        'error' => $error, 'obs' => $obs, 
+                        'advised' => $advised, 'validated' => $validated, 'outdated' => 0);
+                
+                // Adiciona o novo valor
+                $value = $this->Data_value_model->instantiate($data);
+                $add = $value->save();
+                
+                if (is_array($add)) {
+                    $result = $add['result'];
+                }
             }
-		}
-		else
-		{
-			$result = FALSE;
-		}
+        }
+        
 		return $result;
 	}
 	
 	/*
 	 * Elimina um valor da BD (grocery CRUD callback)
 	 */
-	public function prop_vals_delete_callback($primary_key)
+	public function callback_prop_vals_delete($primary_key = 0)
 	{
         $result = FALSE;
         // ** Verifica se o utilizador e administrador **
@@ -192,14 +188,14 @@ class Admin_properties extends CI_Controller {
                 }
             }
 		}
+        
 		return $result;
 	}
 	
 	/*
-	 * Modifica o campo para a insercao 
-	 * (grocery CRUD callback)
+	 * Modifica o campo para a insercao (grocery CRUD callback)
 	 */
-	public function prop_vals_add_field_callback()
+	public function callback_prop_vals_add_field()
 	{
 		return '<select id="field-numeric" name="numeric"><option value="yes">yes</option><option value="no">no</option></select>';
 	}
@@ -238,12 +234,22 @@ class Admin_properties extends CI_Controller {
 		else
 		{
 			// Area proibida
-			set_status_header(401, 'Forbidden Area');
-            $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
-                    text-align:center"><h2>Forbidden Area</h2></div>';
-			$this->output->set_output($html);
+			$this->output->set_output($this->_show_forbidden_msg());
 		}
 	}
+    
+    /*
+     * Mostra a mensagem de 'area proibida'
+     *
+     * @return string Mensagem HTML
+     */
+    private function _show_forbidden_msg()
+    {
+        set_status_header(401, 'Forbidden Area');
+        $html = '<div style="padding:10px; border:1px solid #D893A1; background-color:#FBE6F2;
+        text-align:center"><h2>Forbidden Area</h2></div>';
+        return $html;
+    }
 }
 
 /* End of file admin_properties.php */

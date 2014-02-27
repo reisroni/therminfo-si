@@ -3,7 +3,7 @@
 * admin_compounds.php
 * Controlador da administracao (Compounds)
 * Criado: 20-01-2014
-* Modificado: 24-02-2014
+* Modificado: 26-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -26,7 +26,6 @@ class Admin_compounds extends CI_Controller {
         // Carregar os modelos e inicializar a BD
         $this->load->model('molecule/Molecule_model');
         $this->load->model('other/Session_model');
-		//$this->Molecule_model->setDatabase(HOST, USER, PASS, DB);
         // Carregar os modulos necessarios
         $this->load->library('grocery_CRUD');
         $this->load->library('OBabel');
@@ -68,6 +67,7 @@ class Admin_compounds extends CI_Controller {
 	//---------------------------------------------------------------
 	// Separador 'Compounds'
 	//---------------------------------------------------------------
+    //
 	// ----- Compostos
 	/**
 	 * Gestao dos compostos (grocery CRUD)
@@ -306,6 +306,7 @@ class Admin_compounds extends CI_Controller {
     //---------------------------------------------------------------
 	// Separador 'Class'
 	//---------------------------------------------------------------
+    //
     // ----- Classes
     /**
 	 * Gestao das classes (grocery CRUD)
@@ -343,6 +344,7 @@ class Admin_compounds extends CI_Controller {
     //---------------------------------------------------------------
 	// Separador 'Subclass'
 	//---------------------------------------------------------------
+    //
     // ----- Subclasses
     /**
 	 * Gestao das subclasses (grocery CRUD)
@@ -380,6 +382,7 @@ class Admin_compounds extends CI_Controller {
     //---------------------------------------------------------------
 	// Separador 'Family'
 	//---------------------------------------------------------------
+    //
     // ----- Familias
     /**
 	 * Gestao das familias (grocery CRUD)
@@ -417,6 +420,7 @@ class Admin_compounds extends CI_Controller {
     //---------------------------------------------------------------
 	// Separador 'Characteristic'
 	//---------------------------------------------------------------
+    //
     // ----- Caracteristicas
     /**
 	 * Gestao das caracteristicas (grocery CRUD)
@@ -454,6 +458,7 @@ class Admin_compounds extends CI_Controller {
     //---------------------------------------------------------------
 	// Separador 'Synonym'
 	//---------------------------------------------------------------
+    //
     // ----- Sinonimos
     /**
 	 * Gestao dos sinonimos (grocery CRUD)
@@ -527,6 +532,7 @@ class Admin_compounds extends CI_Controller {
     //---------------------------------------------------------------
 	// Separador 'Others db'
 	//---------------------------------------------------------------
+    //
     // ----- Outras BD
     /**
 	 * Gestao de outras BD (grocery CRUD)
@@ -546,10 +552,11 @@ class Admin_compounds extends CI_Controller {
 			$crud->set_subject('Other DB');
 			$crud->order_by('molecule', 'asc');
 			
-			$crud->required_fields('molecule');
+			$crud->required_fields('molecule', 'db');
 			
-			// Relacoes 'Molecule'
+			// Relacoes 'Molecule', 'Other_db_name'
 			$crud->set_relation('molecule', 'molecule', 'therminfo_id');
+            $crud->set_relation('db', 'other_db_name', 'db_name');
 			 
 			// Vista
 			$output = $crud->render();
