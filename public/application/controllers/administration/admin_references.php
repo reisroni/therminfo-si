@@ -3,7 +3,7 @@
 * admin_references.php
 * Controlador da administracao (References)
 * Criado: 20-01-2014
-* Modificado: 26-02-2014
+* Modificado: 28-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -23,11 +23,11 @@ class Admin_references extends CI_Controller {
 							'user_type' => NULL,
 							'user_inst' => NULL,
 							'user_email' => NULL);
-        // Carregar os modelos e inicializar a BD
+        // Carregar os modelos
         $this->load->model('reference/Reference_model');
         $this->load->model('reference/Author_model');
         $this->load->model('other/Session_model');
-        // Carregar o modulo necessario
+        // Carregar os modulos necessarios
         $this->load->library('grocery_CRUD');
     }
 	

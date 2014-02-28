@@ -4,10 +4,10 @@
  * Copyright (c) 2012, ThermInfo
  *****************************************/
 // Production (root folder)
-var uri = location.protocol + '//' + location.host + '/';
+//var uri = location.protocol + '//' + location.host + '/';
 
 // Development (folder inside root)
-//var uri = location.protocol + '//' + location.host + '/projects/mvc/';
+var uri = location.protocol + '//' + location.host + '/projects/mvc/';
  
 /**
  * Valida os dados inseridos no formulario
@@ -49,20 +49,21 @@ function validate_data() {
 		});
 		$.ajax({
 			type: 'POST',
-			url: uri+'admin/validate_data',
+			url: uri+'administration/admin_insert_data/validate_new_data_values',
 			data: post,
 			cache: false,
 			beforeSend: function(xhr) {
-				$('#dialog').html('<div class="center a-loading"><img src="'+uri+'public/media/images/load.gif" alt="Progress bar" /><br />Processing...</div>');
+				$('#dialog').html('<div class="center a-loading"><img src="'+uri+'public/media/images/load.gif" alt="Progress bar" /><br>Processing...</div>');
 				$('#dialog').dialog('open');
 			},
 			success: function(data) {
 				$('#dialog').html('<div>'+data+'</div>');
 			}
 		}).fail(function(xhr, status) {
-			$('#dialog').html('<p class="errorText textCenter"><strong>For some reason, there was a failure!</strong><br />Error: '+xhr.statusText+'</p>');
+			$('#dialog').html('<p class="errorText textCenter"><strong>For some reason, there was a failure!</strong><br>Error: '+xhr.statusText+'</p>');
 		});
 	}
+	
 	return false;
 }
 
@@ -99,20 +100,21 @@ function add_data() {
 	} else {
 		$.ajax({
 			type: 'POST',
-			url: uri+'admin/add_data',
+			url: uri+'administration/admin_insert_data/insert_new_data_values',
 			data: 'submit=y',
 			cache: false,
 			beforeSend: function(xhr) {
-				$('#dialog').html('<div class="center a-loading"><img src="'+uri+'public/media/images/load.gif" alt="Progress bar" /><br />Processing...</div>');
+				$('#dialog').html('<div class="center a-loading"><img src="'+uri+'public/media/images/load.gif" alt="Progress bar" /><br>Processing...</div>');
 				$('#dialog').dialog('open');
 			},
 			success: function(data) {
 				$('#dialog').html('<div>'+data+'</div>');
 			}
 		}).fail(function(xhr, status) {
-			$('#dialog').html('<p class="errorText textCenter"><strong>For some reason, there was a failure!</strong><br />Error: '+xhr.statusText+'</p>');
+			$('#dialog').html('<p class="errorText textCenter"><strong>For some reason, there was a failure!</strong><br>Error: '+xhr.statusText+'</p>');
 		});
 	}
+	
 	return false;
 }
 
@@ -128,7 +130,7 @@ function add_author() {
 	} else {
 		$.ajax({
 			type: 'POST',
-			url: uri+'admin/add_author',
+			url: uri+'administration/admin_insert_data/insert_new_author',
 			data: 'a-ref-author='+name+'&submit=y',
 			cache: false,
 			success: function(data) {
@@ -182,7 +184,7 @@ function add_ref() {
 		});
 		$.ajax({
 			type: 'POST',
-			url: uri+'admin/add_reference',
+			url: uri+'administration/admin_insert_data/insert_new_reference',
 			data: postar,
 			cache: false,
 			beforeSend: function(xhr) {
@@ -203,7 +205,7 @@ function add_ref() {
 		}).fail(function(xhr, status) {
 			$('#add-ref').dialog('close');
 			$('.ref-load').remove();
-			$('#msg').html('<p class="errorPane"><strong>For some reason, there was a failure!</strong><br />Error: '+xhr.statusText+'</p>').fadeIn('normal');
+			$('#msg').html('<p class="errorPane"><strong>For some reason, there was a failure!</strong><br>Error: '+xhr.statusText+'</p>').fadeIn('normal');
 			$('#msg').delay(5000).fadeOut('slow');
 		});
 	}
@@ -214,7 +216,7 @@ function add_ref() {
  */
 function populate_refs() {
 	// Referencias
-	$.post(uri+'admin/get_lists', {list : 'refs'}, function(html) {
+	$.post(uri+'administration/admin_insert_data/get_lists', {list : 'refs'}, function(html) {
 		$('#a-ref-select').empty().append(html);
 	}).fail(function() {
 		$('#a-ref-select').empty().append('<option value="none">Select a reference</option>');
@@ -226,7 +228,7 @@ function populate_refs() {
  */
 function populate_props() {
 	// Propriedades
-	$.post(uri+'admin/get_lists', {list : 'props'}, function(html) {
+	$.post(uri+'administration/admin_insert_data/get_lists', {list : 'props'}, function(html) {
 		$('#a-prop-select').empty().append(html);
 	}).fail(function() {
 		$('#a-prop-select').empty().append('<option value="none">Select a property</option>');
@@ -238,7 +240,7 @@ function populate_props() {
  */
 function populate_auths() {
 	// Autores
-	$.post(uri+'admin/get_lists', {list : 'auth'}, function(html) {
+	$.post(uri+'administration/admin_insert_data/get_lists', {list : 'auth'}, function(html) {
 		$('#a-author-select').empty().append(html);
 	}).error(function() {
 		$('#a-author-select').empty().append('<option value="none">Select a property</option>');
@@ -308,7 +310,7 @@ $(function() {
 	// Upload de ficheiros
 	$('#a-mols-file').upload({
 		name: 'input-file',
-		action: uri+'admin/upload_file',
+		action: uri+'administration/admin_insert_data/upload_file',
 		autoSubmit: true,
 		params: {upload: 'y', type: 'json'},
 		onSubmit: function() {
@@ -317,7 +319,7 @@ $(function() {
 		onComplete: function(response) {
 			data = $.parseJSON(response);
 			if (data.status == 'ok') {
-				$('#a-file-list').hide().html('<p>'+data.msg+' - <a id="delete-link" href="admin#delete-link">delete</a></p>'+
+				$('#a-file-list').hide().html('<p>'+data.msg+' - <a id="delete-link" href="administration/admin_insert_data#delete-link">delete</a></p>'+
 				'<input type="hidden" id="file-path" name="file_path" value="'+data.file+'"/>'+
 				'<script type="text/javascript" src="public/js/admin_del.js"></script>').fadeIn('normal');
 			} else {
@@ -332,7 +334,7 @@ $(function() {
 	hide_fields('ref');
 	
 	// Define as janelas de dialago
-	$('#add-ref').dialog({
+	/*$('#add-ref').dialog({
 		autoOpen: false,
 		width: 500,
 		height: 450,
@@ -380,7 +382,7 @@ $(function() {
 				$(this).dialog('close');
 			}
 		}
-	});
+	});*/
 	
 	// Atribui os diversos eventos 'click'
 	$('#add-ref-bt').click(function() {

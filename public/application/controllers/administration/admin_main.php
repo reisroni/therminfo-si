@@ -3,7 +3,7 @@
 * admin_main.php
 * Controlador da administracao (Main)
 * Criado: 22-01-2014
-* Modificado: 25-01-2014
+* Modificado: 28-02-2014
 * Copyright (c) 2014, ThermInfo 
 ***********************************/
 
@@ -23,7 +23,7 @@ class Admin_main extends CI_Controller {
 							'user_type' => NULL,
 							'user_inst' => NULL,
 							'user_email' => NULL);
-        // Carregar o modelo
+        // Carregar os modelos
         $this->load->model('other/Session_model');
     }
 	

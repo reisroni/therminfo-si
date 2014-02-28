@@ -24,14 +24,16 @@ $this->load->view('layout/admin_header', $data);
                             </div>
                         </div>
                     </a>
-                    <div class="tile double bg-cyan">
-                        <div class="tile-content icon">
-                            <i class="icon-plus"></i>
-                        </div>
-                        <div class="tile-status">
-                            <span class="name">Insert New Compounds/Values</span>
-                        </div>
-                    </div>
+					<a href="administration/admin_insert_data" title="Insert New Compounds/Values">
+						<div class="tile double bg-cyan">
+							<div class="tile-content icon">
+								<i class="icon-plus"></i>
+							</div>
+							<div class="tile-status">
+								<span class="name">Insert New Compounds/Values</span>
+							</div>
+						</div>
+					</a>
                     <a href="administration/admin_validate_data" title="Validate New Compounds/Values">
                         <div class="tile double bg-amber">
                             <div class="tile-content icon">

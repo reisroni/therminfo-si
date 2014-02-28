@@ -3,7 +3,7 @@
  * --- DatabaseObject
  * Descricao: Modelo para objectos da base de dados
  * Criado: 13-05-2013
- * Modificado: 23-02-2014
+ * Modificado: 28-02-2014
  * @author Roni Reis
  * @version 0.1
  * @package Therminfo
@@ -287,19 +287,24 @@ class DatabaseObject_model extends CI_Model
 	 * Retorna todos os registos distintos da BD
 	 *
 	 * @param string $order Nome da coluna para ordenacao
+	 * @param string $desc Ordenacao descendente
 	 *
 	 * @return mixed Array com os registos
 	 * ou 'FALSE' em caso de falha
 	 *
 	 * [Array([int] => object(registo))]
 	 */
-	public function find_all_distinct($order = '')
+	public function find_all_distinct($order = '', $desc = FALSE)
 	{
 		$query = "SELECT DISTINCT * FROM {$this->table_name}";
         $order = $this->db_escape($order);
         
 		if (! empty($order)) {
-			$query .= " ORDER BY {$order} ASC";
+			$query .= " ORDER BY {$order}";
+			
+			if ($desc) {
+				$query .= ' DESC';
+			}
 		}
         
 		return $this->find_by_sql($query);

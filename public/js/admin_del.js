@@ -4,10 +4,10 @@
  * Copyright (c) 2012, ThermInfo
  *****************************************/
 // Production (root folder)
-var uri = location.protocol + '//' + location.host + '/';
+//var uri = location.protocol + '//' + location.host + '/';
 
 // Development (folder inside root)
-//var uri = location.protocol + '//' + location.host + '/projects/mvc/';
+var uri = location.protocol + '//' + location.host + '/projects/mvc/';
 
 $(function() {
 	$('#delete-link').on('click', function(e) {
@@ -16,7 +16,7 @@ $(function() {
 		if (del) {
 			var file_path = $('#file-path').val();
 			$('#a-file-list').append('<span class="up_img"><img src="'+uri+'public/media/images/load_1.gif" alt="loading"> Deleting...</span>');
-			$.post(uri+'admin/delete_file', {'delete': 'y', 'path': file_path},
+			$.post(uri+'administration/admin_insert_data/delete_file', {'delete': 'y', 'path': file_path},
 				function(response) {
 					if (response.status == 'ok') {
 						$('#a-file-list').fadeOut('normal', function(){
@@ -30,6 +30,7 @@ $(function() {
 				}, 'json'
 			).error(function() { alert('Failure'); $('.up_img').remove(); });
 		}
+		
 		return false;
 	});
 });
